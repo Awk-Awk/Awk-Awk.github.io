@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Children's Play Place</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style> 
+            body {
+                font-family: papyrus, herculanum, "fantasy";
+                background: indigo;
+                color: silver;
+            }
+            footer {
+                color: gray;
+            }
+            a {
+                color: grey;
+                font-size: 0.8em;
+            }            
+        </style>      
+        <script src="https://cs.nyu.edu/~kapp/cs101/processing_on_the_web/processing.js"></script>
+    </head>
+    <body>
+        <p>
+            Click <a href="index.html">here</a> for art and <a href="stories.html">here</a> for stories.
+        </p>
+        <h1>Children's Play Place</h1>
+        <nav>
+            <ul>
+                <li><a href="#fish">Fish Bowl</a></li>
+                <li><a href="#paint">Postmodern Paint Program</a></li>
+            </ul>
+        </nav>
+        <h2 id="fish">Fish Bowl</h2>
+        <p><a href="games.html">(Return to top)</a></p>
+        <canvas id="canvas1"></canvas>
+        <script>
+            var canvas1 = document.getElementById("canvas1");
+            var processing = new Processing(canvas1, function(processing) {
+                processing.size(500, 500);
+                processing.background(0xFFF);
+
+                var mouseIsPressed = false;
+                processing.mousePressed = function () { mouseIsPressed = true; };
+                processing.mouseReleased = function () { mouseIsPressed = false; };
+
+                var keyIsPressed = false;
+                processing.keyPressed = function () { keyIsPressed = true; };
+                processing.keyReleased = function () { keyIsPressed = false; };
+
+                function getImage(s) {
+                    var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+                    processing.externals.sketch.imageCache.add(url);
+                    return processing.loadImage(url);
+                }
+
+                with (processing) {  
+
+
+                    // INSERT YOUR KHAN ACADEMY "JavaScript" BETWEEN THESE HEADERS
+                background(0, 115, 255);
+
+                var drawFish = function(x, y, length) {
+                    fill(x, y, x*y);
+                    ellipse(x, y, length, length/3);
+                };
+
+                draw= function() { 
+                    background(0, 115, 255);
+                    drawFish(mouseX, mouseY, 100);
+                    drawFish(mouseX*2, mouseY/3, 200);
+                    drawFish(mouseX-20, mouseY/1.5, 40);
+                    drawFish(50, 100, mouseX, mouseY);
+                    drawFish(mouseX, 100, 200, mouseY);
+                    drawFish(mouseX*1.5, mouseY-3, mouseX/3*mouseY/10);
+                    drawFish(mouseX/mouseY, 7, mouseX, 30);
+                    drawFish(mouseX-100, mouseY-100, 200);
+                };
+
+            //INSERT PROGRAM BETWEEN THESE HEADERS
+
+        }    
+                if (typeof draw !== 'undefined') processing.draw = draw;
+            }); 
+
+        </script>
+        <h2 id="paint">Postmodern Paint Program</h2>
+        <p><a href="games.html">(Return to top)</a></p>
+        <canvas id="canvas2"></canvas>
+        <script>
+            var canvas2 = document.getElementById("canvas2");
+            var processing = new Processing(canvas2, function(processing) {
+                processing.size(500, 500);
+                processing.background(0xFFF);
+
+                var mouseIsPressed = false;
+                processing.mousePressed = function () { mouseIsPressed = true; };
+                processing.mouseReleased = function () { mouseIsPressed = false; };
+
+                var keyIsPressed = false;
+                processing.keyPressed = function () { keyIsPressed = true; };
+                processing.keyReleased = function () { keyIsPressed = false; };
+
+                function getImage(s) {
+                    var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+                    processing.externals.sketch.imageCache.add(url);
+                    return processing.loadImage(url);
+                }
+
+                with (processing) {  
+
+
+                    // INSERT YOUR KHAN ACADEMY "JavaScript" BETWEEN THESE HEADERS
+                    background(0, 0, 0);
+
+                    var drawSomething = function(faceX, faceY, size) {
+                        fill(255, 0, 0);
+                        ellipse(faceX, faceY, size, size); // face
+                        fill(255, 255, 0);
+                        ellipse(faceX - size/5, faceY - 3/18*size, size/10, size/2); // eyes
+                        ellipse(faceX + 4/180*size, faceY - 55/120*size, size/16, size/6);
+                        ellipse(faceX + 19/180*size, faceY + 32/180*size, 4/9*size, 1/9*size); // mouth
+                    };
+
+                    draw = function() {
+                        drawSomething (mouseX, mouseY, 100*mouseY/mouseX);
+                    };
+
+            //INSERT PROGRAM BETWEEN THESE HEADERS
+
+        }    
+                if (typeof draw !== 'undefined') processing.draw = draw;
+            }); 
+        </script>
+    </body>
+</html>
+ 
